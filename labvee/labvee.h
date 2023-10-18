@@ -31,9 +31,9 @@
 #define TRES 3
 #define CUATRO 4
 
-static PCF8575 keypad(0x20);
-static PCF8575 labveeIO(0x21);
-static PCF8575 display_7seg(0x22);
+extern PCF8575 keypad(0x20);
+extern PCF8575 labveeIO(0x21);
+extern PCF8575 display_7seg(0x22);
 
 #define terminalRead(TERMINAL, PIN) (labveeIO.digitalRead(((TERMINAL-1)*4)+PIN))
 #define terminalWrite(TERMINAL, PIN, STATE) (labveeIO.digitalWrite((((TERMINAL-1)*4)+PIN), STATE))
@@ -51,14 +51,16 @@ static PCF8575 display_7seg(0x22);
 #define terminalThreeWrite(PIN, STATE) (labveeIO.digitalWrite((7 + PIN), STATE))
 #define terminalThreeMode(PIN, MODE) (labveeIO.pinMode((7 + PIN), MODE))
 
-#define terminalFourRead(PIN) (labveeIO.digitalRead((11 + PIN))
+#define terminalFourRead(PIN) (labveeIO.digitalRead(11 + PIN))
 #define terminalFourWrite(PIN, STATE) (labveeIO.digitalWrite((11 + PIN), STATE))
 #define terminalFourMode(PIN, MODE) (labveeIO.pinMode((11 + PIN), MODE))
 
-void teminalInit();
+#define teminalInit() labveeIO.begin()
+
 void keypadInit();
 uint8_t keypadWaitValue();
 uint8_t keypadgetValue();
+
 void displayInit(uint8_t display);
 void displayWrite(uint8_t display, uint8_t value);
 void displayDP(uint8_t display, uint8_t value);

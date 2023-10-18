@@ -1,8 +1,8 @@
 #include "labvee.h"
 
-void teminalInit(){
-  labveeIO.begin();
-}
+PCF8575 keypad(0x20);
+PCF8575 labveeIO(0x21);
+PCF8575 display_7seg(0x22);
 
 void keypadInit(){
   keypad.pinMode(P0, OUTPUT);
