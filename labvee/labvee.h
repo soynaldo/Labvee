@@ -31,37 +31,19 @@
 #define TRES 3
 #define CUATRO 4
 
-extern PCF8575 keypad(0x20);
-extern PCF8575 labveeIO(0x21);
-extern PCF8575 display_7seg(0x22);
-
-#define terminalRead(TERMINAL, PIN) (labveeIO.digitalRead(((TERMINAL-1)*4)+PIN))
-#define terminalWrite(TERMINAL, PIN, STATE) (labveeIO.digitalWrite((((TERMINAL-1)*4)+PIN), STATE))
-#define terminalMode(TERMINAL, PIN, MODE) (labveeIO.pinMode((((TERMINAL-1)*4)+PIN), MODE))
-
-#define terminalOneRead(PIN) (labveeIO.digitalRead(PIN - 1))
-#define terminalOneWrite(PIN, STATE) (labveeIO.digitalWrite(PIN, STATE))
-#define terminalOneMode(PIN, MODE) (labveeIO.pinMode(PIN, MODE))
-
-#define terminalTwoRead(PIN) (labveeIO.digitalRead(3 + PIN))
-#define terminalTwoWrite(PIN, STATE) (labveeIO.digitalWrite((3 + PIN), STATE))
-#define terminalTwoMode(PIN, MODE) (labveeIO.pinMode((3 + PIN), MODE))
-
-#define terminalThreeRead(PIN) (labveeIO.digitalRead(7 + PIN))
-#define terminalThreeWrite(PIN, STATE) (labveeIO.digitalWrite((7 + PIN), STATE))
-#define terminalThreeMode(PIN, MODE) (labveeIO.pinMode((7 + PIN), MODE))
-
-#define terminalFourRead(PIN) (labveeIO.digitalRead(11 + PIN))
-#define terminalFourWrite(PIN, STATE) (labveeIO.digitalWrite((11 + PIN), STATE))
-#define terminalFourMode(PIN, MODE) (labveeIO.pinMode((11 + PIN), MODE))
-
-#define teminalInit() labveeIO.begin()
+uint8_t terminalRead(uint8_t terminal, uint8_t pin);
+void terminalWrite(uint8_t terminal, uint8_t pin, uint8_t state);
+void terminalInit();
 
 void keypadInit();
 uint8_t keypadWaitValue();
-uint8_t keypadgetValue();
+uint8_t keypadGetValue();
 
-void displayInit(uint8_t display);
+void displayInit();
+void displayReset(uint8_t display);
+void displayReset();
 void displayWrite(uint8_t display, uint8_t value);
+void displayWrite(uint8_t value);
 void displayDP(uint8_t display, uint8_t value);
 void displayPIN(uint8_t display, uint8_t pin, uint8_t value);
+void displayPIN(uint8_t pin, uint8_t value);
