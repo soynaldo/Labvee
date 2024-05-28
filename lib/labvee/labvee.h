@@ -21,6 +21,9 @@
 #define D2_G 14
 #define D2_DP 15
 
+#define DISPLAY_U 1
+#define DISPLAY_D 2
+
 #define ONE 1
 #define TWO 2
 #define THREE 3
@@ -31,8 +34,11 @@
 #define TRES 3
 #define CUATRO 4
 
-uint8_t terminalRead(uint8_t terminal, uint8_t pin);
-void terminalWrite(uint8_t terminal, uint8_t pin, uint8_t state);
+#define portUART Serial
+#define portUART_begin() Serial.begin(115200)
+
+uint8_t portDIGITAL(uint8_t terminal, uint8_t pin);
+void portDIGITAL(uint8_t terminal, uint8_t pin, uint8_t state);
 void terminalInit();
 
 void keypadInit();
@@ -45,5 +51,6 @@ void displayReset();
 void displayWrite(uint8_t display, uint8_t value);
 void displayWrite(uint8_t value);
 void displayDP(uint8_t display, uint8_t value);
-void displayPIN(uint8_t display, uint8_t pin, uint8_t value);
-void displayPIN(uint8_t pin, uint8_t value);
+void displaySegment(uint8_t display, uint8_t segment, uint8_t value);
+void displaySegment(uint8_t display, uint8_t A, uint8_t B, uint8_t C, uint8_t D, uint8_t E, uint8_t F, uint8_t G, uint8_t DP);
+
