@@ -1,0 +1,115 @@
+#######################################
+
+# Syntax Coloring Map For Labvee
+
+####################################### 
+
+
+#######################################
+
+# Datatypes (KEYWORD1)
+
+#######################################
+
+
+portUART    KEYWORD1
+
+
+######################################
+
+# Methods and Functions (KEYWORD2)
+
+#######################################	
+
+
+portUART_begin    KEYWORD2
+portADC    KEYWORD2
+
+portDIGITAL	   KEYWORD2
+portDIGITAL	   KEYWORD2
+keypadWaitValue	   KEYWORD2
+keypadGetValue	  KEYWORD2
+displayReset	KEYWORD2
+displayReset	KEYWORD2
+displayWrite	KEYWORD2
+displayWrite	KEYWORD2
+displayDP	 KEYWORD2
+displaySegment	  KEYWORD2
+displaySegment	  KEYWORD2
+
+portI2C_begin    KEYWORD2
+portI2C_read8    KEYWORD2
+portI2C_write8    KEYWORD2
+portI2C_read16    KEYWORD2
+portI2C_write16    KEYWORD2
+portI2C_readBytes    KEYWORD2
+portI2C_writeBytes    KEYWORD2
+
+portPWM_begin    KEYWORD2
+portPWM_begin    KEYWORD2
+portPWM    KEYWORD2
+portPWM    KEYWORD2
+portPWM_setFrecuency    KEYWORD2
+portPWM_setOscFreq    KEYWORD2
+portPWM_setExtClk    KEYWORD2
+portPWM_reset    KEYWORD2
+portPWM_sleep    KEYWORD2
+portPWM_wakeup    KEYWORD2
+portPWM_setMode    KEYWORD2
+portPWM_getMode    KEYWORD2
+
+
+#######################################
+
+# Constants (LITERAL1)
+
+#######################################
+
+
+D1_A    LITERAL1
+D1_B    LITERAL1
+D1_C    LITERAL1
+D1_D    LITERAL1
+D1_E    LITERAL1
+D1_F    LITERAL1
+D1_G    LITERAL1
+D1_DP    LITERAL1
+
+D2_A    LITERAL1
+D2_B    LITERAL1
+D2_C    LITERAL1
+D2_D    LITERAL1
+D2_E    LITERAL1
+D2_F    LITERAL1
+D2_G    LITERAL1
+D2_DP    LITERAL1
+
+PA0    LITERAL1
+PA1    LITERAL1
+PA2    LITERAL1
+PA3    LITERAL1
+
+DISPLAY_U    LITERAL1
+DISPLAY_D    LITERAL1
+
+KEYPAD_ADDRESS    LITERAL1
+TERMINAL_ADDRESS    LITERAL1
+DISPLAY_ADDRESS    LITERAL1
+
+PCA9685_MODE1    LITERAL1
+PCA9685_MODE2    LITERAL1
+PCA9685_LED0_ON_L    LITERAL1
+PCA9685_LED0_ON_H    LITERAL1
+PCA9685_LED0_OFF_L    LITERAL1
+PCA9685_LED0_OFF_H    LITERAL1
+PCA9685_PRESCALE    LITERAL1
+PCA9685_TESTMODE    LITERAL1
+MODE1_SLEEP    LITERAL1
+MODE1_AI    LITERAL1
+MODE1_EXTCLK    LITERAL1
+MODE1_RESTART    LITERAL1
+PCA9685_I2C_ADDRESS    LITERAL1
+FREQUENCY_OSCILLATOR    LITERAL1
+PCA9685_PRESCALE_MIN    LITERAL1
+PCA9685_PRESCALE_MAX    LITERAL1
+
