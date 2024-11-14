@@ -5,6 +5,13 @@
 #include "coordinates.h"
 #include <Arduino.h>
 
+
+// #define GPIO1
+// #define GPIO2
+// #define GPIO3
+// #define GPIO4
+
+
 // Definiciones para los segmentos de los displays
 #define D1_A 0  ///< Segmento A del display 1.
 #define D1_B 1  ///< Segmento B del display 1.
@@ -32,13 +39,13 @@
 #define DISPLAY_U 1 ///< Display de unidades.
 #define DISPLAY_D 2 ///< Display de decenas.
 
-#define portUART Serial ///< Puerto UART utilizado.
-#define portSPI SPI     ///< Puerto SPI utilizado.
+#define UART Serial ///< Puerto UART utilizado.
+#define SPI SPI     ///< Puerto SPI utilizado.
 
 /**
  * @brief Inicializa el puerto UART a 115200 baudios.
  */
-#define portUART_begin() Serial.begin(115200)
+#define UART_Begin() Serial.begin(115200)
 
 /**
  * @brief Lee un valor analógico desde el pin especificado.
@@ -46,7 +53,7 @@
  * @param pin Pin analógico desde el que se leerá.
  * @return El valor analógico leído.
  */
-#define portADC(pin) analogRead(pin)
+#define ADC(pin) analogRead(pin)
 
 #define KEYPAD_ADDRESS 0x20 ///< Dirección I2C del teclado.
 #define TERMINAL_ADDRESS 0x21 ///< Dirección I2C del terminal.
@@ -59,7 +66,7 @@
  * @param pin El pin que se va a leer.
  * @return El estado actual del pin (HIGH o LOW).
  */
-uint8_t portDIGITAL(uint8_t terminal, uint8_t pin);
+uint8_t DIGITAL(uint8_t terminal, uint8_t pin);
 
 /**
  * @brief Configura el estado de un pin digital en un terminal específico.
@@ -68,7 +75,7 @@ uint8_t portDIGITAL(uint8_t terminal, uint8_t pin);
  * @param pin El pin que se va a configurar.
  * @param state El estado que se desea establecer (HIGH o LOW).
  */
-void portDIGITAL(uint8_t terminal, uint8_t pin, uint8_t state);
+void DIGITAL(uint8_t terminal, uint8_t pin, uint8_t state);
 
 /**
  * @brief Configura el modo de un pin digital (entrada o salida).
@@ -77,7 +84,7 @@ void portDIGITAL(uint8_t terminal, uint8_t pin, uint8_t state);
  * @param pin El pin que se va a configurar.
  * @param mode El modo del pin (INPUT o OUTPUT).
  */
-void portDIGITAL_mode(uint8_t terminal, uint8_t pin, uint8_t mode);
+void DIGITAL_Mode(uint8_t terminal, uint8_t pin, uint8_t mode);
 
 /**
  * @brief Espera un valor del teclado.

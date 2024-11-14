@@ -12,7 +12,7 @@
 #######################################
 
 
-portUART    KEYWORD1
+UART    KEYWORD1
 
 
 ######################################
@@ -22,11 +22,11 @@ portUART    KEYWORD1
 #######################################	
 
 
-portUART_begin    KEYWORD2
-portADC    KEYWORD2
+UART_Begin    KEYWORD2
+ADC    KEYWORD2
 
-portDIGITAL	   KEYWORD2
-portDIGITAL	   KEYWORD2
+DIGITAL	   KEYWORD2
+DIGITAL	   KEYWORD2
 keypadWaitValue	   KEYWORD2
 keypadGetValue	  KEYWORD2
 displayReset	KEYWORD2
@@ -37,26 +37,26 @@ displayDP	 KEYWORD2
 displaySegment	  KEYWORD2
 displaySegment	  KEYWORD2
 
-portI2C_begin    KEYWORD2
-portI2C_read8    KEYWORD2
-portI2C_write8    KEYWORD2
-portI2C_read16    KEYWORD2
-portI2C_write16    KEYWORD2
-portI2C_readBytes    KEYWORD2
-portI2C_writeBytes    KEYWORD2
+I2C_Begin    KEYWORD2
+I2C_Read8    KEYWORD2
+I2C_Write8    KEYWORD2
+I2C_Read16    KEYWORD2
+I2C_Write16    KEYWORD2
+I2C_ReadBytes    KEYWORD2
+I2C_WriteBytes    KEYWORD2
 
-portPWM_begin    KEYWORD2
-portPWM_begin    KEYWORD2
-portPWM    KEYWORD2
-portPWM    KEYWORD2
-portPWM_setFrecuency    KEYWORD2
-portPWM_setOscFreq    KEYWORD2
-portPWM_setExtClk    KEYWORD2
-portPWM_reset    KEYWORD2
-portPWM_sleep    KEYWORD2
-portPWM_wakeup    KEYWORD2
-portPWM_setMode    KEYWORD2
-portPWM_getMode    KEYWORD2
+PWM_Begin    KEYWORD2
+PWM_Begin    KEYWORD2
+PWM    KEYWORD2
+PWM    KEYWORD2
+PWM_SetFrecuency    KEYWORD2
+PWM_SetOscFreq    KEYWORD2
+PWM_SetExtClk    KEYWORD2
+PWM_Reset    KEYWORD2
+PWM_Sleep    KEYWORD2
+PWM_Wakeup    KEYWORD2
+PWM_SetMode    KEYWORD2
+PWM_GetMode    KEYWORD2
 
 
 #######################################

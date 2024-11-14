@@ -1,11 +1,11 @@
 #include "i2c.h"
 
-void portI2C_begin()
+void I2C_Begin()
 {
     Wire.begin();
 }
 
-uint8_t portI2C_read8(const uint8_t address)
+uint8_t I2C_Read8(const uint8_t address)
 {
     uint8_t data_in = 0;
     if (Wire.requestFrom(address, (uint8_t)1) != 1)
@@ -16,14 +16,14 @@ uint8_t portI2C_read8(const uint8_t address)
     return data_in;
 }
 
-uint8_t portI2C_write8(const uint8_t address, const uint8_t value)
+uint8_t I2C_Write8(const uint8_t address, const uint8_t value)
 {
     Wire.beginTransmission(address);
     Wire.write(value);
     return Wire.endTransmission();
 }
 
-uint16_t portI2C_read16(const uint8_t address)
+uint16_t I2C_Read16(const uint8_t address)
 {
     uint16_t data_in = 0;
     if (Wire.requestFrom(address, (uint8_t)2) != 2)
@@ -35,7 +35,7 @@ uint16_t portI2C_read16(const uint8_t address)
     return data_in;
 }
 
-uint8_t portI2C_write16(const uint8_t address, const uint16_t value)
+uint8_t I2C_Write16(const uint8_t address, const uint16_t value)
 {
     Wire.beginTransmission(address);
     Wire.write(value & 0xFF);
@@ -43,7 +43,7 @@ uint8_t portI2C_write16(const uint8_t address, const uint16_t value)
     return Wire.endTransmission();
 }
 
-uint8_t portI2C_readBytes(const uint8_t address, uint8_t *buffer, size_t len)
+uint8_t I2C_ReadBytes(const uint8_t address, uint8_t *buffer, size_t len)
 {
     size_t recv = Wire.requestFrom(address, len);
     if (recv != len)
@@ -55,14 +55,14 @@ uint8_t portI2C_readBytes(const uint8_t address, uint8_t *buffer, size_t len)
     return true;
 }
 
-uint8_t portI2C_writeBytes(const uint8_t address, const uint8_t *value, size_t len)
+uint8_t I2C_WriteBytes(const uint8_t address, const uint8_t *value, size_t len)
 {
     Wire.beginTransmission(address);
     Wire.write(value, len);
     return Wire.endTransmission();
 }
 
-uint8_t portI2C_writeBytes(const uint8_t address, const uint8_t *value, size_t len,
+uint8_t I2C_WriteBytes(const uint8_t address, const uint8_t *value, size_t len,
                            const uint8_t *prefix_value, size_t prefix_len)
 {
     Wire.beginTransmission(address);

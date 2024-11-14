@@ -7,8 +7,8 @@
  * UART y I2C.
  */
 void setup() {
-  portUART_begin(); ///< Inicializa la comunicación UART a 115200 baudios.
-  portI2C_begin();  ///< Inicializa la comunicación I2C.
+  UART_Begin(); ///< Inicializa la comunicación UART a 115200 baudios.
+  I2C_Begin();  ///< Inicializa la comunicación I2C.
 }
 
 /**

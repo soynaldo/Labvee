@@ -7,7 +7,7 @@
  * segmentos individuales. También se activa el punto decimal.
  */
 void setup() {
-  portI2C_begin();
+  I2C_Begin();
   displayReset(DISPLAY_U); ///< Resetea el display de las unidades.
     
   // Activa los segmentos A, B, C, D y G para formar el número "3".

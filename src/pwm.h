@@ -28,14 +28,14 @@
  * 
  * Configura el sistema de PWM listo para su uso.
  */
-void portPWM_begin();
+void PWM_Begin();
 
 /**
  * @brief Inicializa el módulo PWM con un valor de prescaler personalizado.
  * 
  * @param prescale El valor del prescaler para configurar la frecuencia de PWM.
  */
-void portPWM_begin(uint8_t prescale);
+void PWM_Begin(uint8_t prescale);
 
 /**
  * @brief Configura un pin para generar PWM con un porcentaje de ciclo útil.
@@ -43,7 +43,7 @@ void portPWM_begin(uint8_t prescale);
  * @param pin El pin donde se generará la señal PWM.
  * @param percent El ciclo útil de PWM en porcentaje (0-100).
  */
-void portPWM(uint8_t pin, uint8_t percent);
+void PWM(uint8_t pin, uint8_t percent);
 
 /**
  * @brief Lee el ciclo útil actual en porcentaje en un pin PWM.
@@ -51,56 +51,56 @@ void portPWM(uint8_t pin, uint8_t percent);
  * @param pin El pin donde se está generando la señal PWM.
  * @return El ciclo útil de PWM en porcentaje (0-100).
  */
-uint16_t portPWM(uint8_t pin);
+uint16_t PWM(uint8_t pin);
 
 /**
  * @brief Configura la frecuencia de PWM.
  * 
  * @param frecuency La frecuencia de la señal PWM en Hz.
  */
-void portPWM_setFrecuency(float frecuency);
+void PWM_SetFrecuency(float frecuency);
 
 /**
  * @brief Configura la frecuencia del oscilador interno del módulo PWM.
  * 
  * @param freq Frecuencia del oscilador en Hz.
  */
-void portPWM_setOscFreq(uint32_t freq);
+void PWM_SetOscFreq(uint32_t freq);
 
 /**
  * @brief Configura el uso de un reloj externo para el módulo PWM.
  * 
  * @param prescale El valor del prescaler para la señal de reloj externo.
  */
-void portPWM_setExtClk(uint8_t prescale);
+void PWM_SetExtClk(uint8_t prescale);
 
 /**
  * @brief Resetea el módulo PWM a su estado inicial.
  * 
  * Esta función restablece todas las configuraciones del módulo PWM.
  */
-void portPWM_reset();
+void PWM_Reset();
 
 /**
  * @brief Pone el módulo PWM en modo de suspensión.
  * 
  * Esta función reduce el consumo de energía desactivando el PWM hasta que sea reactivado.
  */
-void portPWM_sleep();
+void PWM_Sleep();
 
 /**
  * @brief Reactiva el módulo PWM después de haber sido suspendido.
  * 
  * Despierta el módulo PWM y lo pone en funcionamiento.
  */
-void portPWM_wakeup();
+void PWM_Wakeup();
 
 /**
  * @brief Lee el valor actual del prescaler del módulo PWM.
  * 
  * @return El valor del prescaler configurado.
  */
-uint8_t portPWM_readPrescale();
+uint8_t PWM_ReadPrescale();
 
 /**
  * @brief Configura el modo del módulo PWM.
@@ -108,7 +108,7 @@ uint8_t portPWM_readPrescale();
  * @param mode El modo que se desea configurar.
  * @param value El valor correspondiente al modo seleccionado.
  */
-void portPWM_setMode(uint8_t mode, uint8_t value);
+void PWM_SetMode(uint8_t mode, uint8_t value);
 
 /**
  * @brief Obtiene el valor actual de un modo específico en el módulo PWM.
@@ -116,4 +116,4 @@ void portPWM_setMode(uint8_t mode, uint8_t value);
  * @param mode El modo del cual se desea obtener el valor.
  * @return El valor actual del modo seleccionado.
  */
-uint8_t portPWM_getMode(uint8_t mode);
+uint8_t PWM_GetMode(uint8_t mode);
