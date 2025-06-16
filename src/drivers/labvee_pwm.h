@@ -1,4 +1,4 @@
-#include "i2c.h"
+#include "labvee_i2c.h"
 
 // REGISTER ADDRESSES
 #define PCA9685_MODE1 0x00      /**< Mode Register 1 */
@@ -22,20 +22,21 @@
 #define PCA9685_PRESCALE_MIN 3   /**< minimum prescale value */
 #define PCA9685_PRESCALE_MAX 255 /**< maximum prescale value */
 
-
+class PWM_Class {
+public:
 /**
  * @brief Inicializa el módulo PWM con configuración por defecto.
  * 
  * Configura el sistema de PWM listo para su uso.
  */
-void PWM_Begin();
+void begin();
 
 /**
  * @brief Inicializa el módulo PWM con un valor de prescaler personalizado.
  * 
  * @param prescale El valor del prescaler para configurar la frecuencia de PWM.
  */
-void PWM_Begin(uint8_t prescale);
+void begin(uint8_t prescale);
 
 /**
  * @brief Configura un pin para generar PWM con un porcentaje de ciclo útil.
@@ -43,7 +44,7 @@ void PWM_Begin(uint8_t prescale);
  * @param pin El pin donde se generará la señal PWM.
  * @param percent El ciclo útil de PWM en porcentaje (0-100).
  */
-void PWM(uint8_t pin, uint8_t percent);
+void set(uint8_t pin, uint8_t percent);
 
 /**
  * @brief Lee el ciclo útil actual en porcentaje en un pin PWM.
@@ -51,56 +52,56 @@ void PWM(uint8_t pin, uint8_t percent);
  * @param pin El pin donde se está generando la señal PWM.
  * @return El ciclo útil de PWM en porcentaje (0-100).
  */
-uint16_t PWM(uint8_t pin);
+uint16_t get(uint8_t pin);
 
 /**
  * @brief Configura la frecuencia de PWM.
  * 
  * @param frecuency La frecuencia de la señal PWM en Hz.
  */
-void PWM_SetFrecuency(float frecuency);
+void setFrecuency(float frecuency);
 
 /**
  * @brief Configura la frecuencia del oscilador interno del módulo PWM.
  * 
  * @param freq Frecuencia del oscilador en Hz.
  */
-void PWM_SetOscFreq(uint32_t freq);
+void setOscFreq(uint32_t freq);
 
 /**
  * @brief Configura el uso de un reloj externo para el módulo PWM.
  * 
  * @param prescale El valor del prescaler para la señal de reloj externo.
  */
-void PWM_SetExtClk(uint8_t prescale);
+void setExtClk(uint8_t prescale);
 
 /**
  * @brief Resetea el módulo PWM a su estado inicial.
  * 
  * Esta función restablece todas las configuraciones del módulo PWM.
  */
-void PWM_Reset();
+void reset();
 
 /**
  * @brief Pone el módulo PWM en modo de suspensión.
  * 
  * Esta función reduce el consumo de energía desactivando el PWM hasta que sea reactivado.
  */
-void PWM_Sleep();
+void sleep();
 
 /**
  * @brief Reactiva el módulo PWM después de haber sido suspendido.
  * 
  * Despierta el módulo PWM y lo pone en funcionamiento.
  */
-void PWM_Wakeup();
+void wakeup();
 
 /**
  * @brief Lee el valor actual del prescaler del módulo PWM.
  * 
  * @return El valor del prescaler configurado.
  */
-uint8_t PWM_ReadPrescale();
+uint8_t readPrescale();
 
 /**
  * @brief Configura el modo del módulo PWM.
@@ -108,7 +109,7 @@ uint8_t PWM_ReadPrescale();
  * @param mode El modo que se desea configurar.
  * @param value El valor correspondiente al modo seleccionado.
  */
-void PWM_SetMode(uint8_t mode, uint8_t value);
+void setMode(uint8_t mode, uint8_t value);
 
 /**
  * @brief Obtiene el valor actual de un modo específico en el módulo PWM.
@@ -116,4 +117,11 @@ void PWM_SetMode(uint8_t mode, uint8_t value);
  * @param mode El modo del cual se desea obtener el valor.
  * @return El valor actual del modo seleccionado.
  */
-uint8_t PWM_GetMode(uint8_t mode);
+uint8_t getMode(uint8_t mode);
+
+private:
+    uint32_t _oscillator_freq = FREQUENCY_OSCILLATOR; /**< Frecuencia del oscilador interno del módulo PWM */
+    uint8_t _prescale = 0; /**< Valor del prescaler para la frecuencia de PWM */
+};
+
+extern PWM_Class PWM; ///< Instancia de la clase PWM_Class para su uso en el programa.

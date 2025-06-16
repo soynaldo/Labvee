@@ -7,8 +7,8 @@
  * un pin para generar una señal PWM con un ciclo útil del 50%.
  */
 void setup() {
-    PWM_Begin(64);  ///< Inicializa el módulo PWM con un prescaler de 64.
-    PWM(9, 50);     ///< Configura el pin 9 con un ciclo útil del 50%.
+    PWM.begin(64);  ///< Inicializa el módulo PWM con un prescaler de 64.
+    PWM.set(9, 50);     ///< Configura el pin 9 con un ciclo útil del 50%.
 }
 
 void loop() {

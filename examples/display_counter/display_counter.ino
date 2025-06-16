@@ -18,11 +18,11 @@ void setup() {
  * los números del 0 al 99 en intervalos de un segundo.
  */
 void loop() {
-  displayReset(); ///< Resetea el display antes de mostrar nuevos valores.
+  DISPLAYS.reset(); ///< Resetea el display antes de mostrar nuevos valores.
     
   // Muestra los números del 0 al 99 en el display, un número por segundo.
   for (int i = 0; i < 100; i++) {  // Corrección: Se cambió la coma (,) por punto y coma (;)
-      displayWrite(i);  ///< Escribe el número actual en el display.
-      delay(1000);      ///< Espera 1 segundo antes de mostrar el siguiente número.
+    DISPLAYS.write(i);  ///< Escribe el número actual en el display.
+    delay(1000);      ///< Espera 1 segundo antes de mostrar el siguiente número.
   }
 }

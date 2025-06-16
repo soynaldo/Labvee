@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Arduino.h"
-#include "i2c.h"
+#include "labvee_i2c.h"
 
 /**
  * @class Coords_t
@@ -26,25 +26,29 @@ public:
     int y = 0;
 };
 
-/**
- * @brief Espera un valor del teclado.
- * 
- * Esta función bloquea hasta que se reciba un valor del teclado.
- * 
- * @return El valor del teclado.
- */
-uint8_t keypadWaitValue();
 
-/**
- * @brief Obtiene el valor actual del teclado.
- * 
- * @return El valor leído del teclado.
- */
-uint8_t keypadGetValue();
+class KEYPAD_Class {
+public:
+    /**
+     * @brief Obtiene el valor actual del teclado.
+     * 
+     * @return El valor leído del teclado.
+     */
+    uint8_t read();
 
-/**
- * @brief Obtiene las coordenadas de la última tecla presionada.
- * 
- * @return Un objeto Coords_t con las coordenadas (x, y).
- */
-Coords_t keypadGetCoords();
+    /**
+     * @brief Espera hasta que se presione una tecla y devuelve su valor.
+     * 
+     * @return El valor de la tecla presionada.
+     */
+    uint8_t wait();
+
+    /**
+     * @brief Obtiene las coordenadas de la última tecla presionada.
+     * 
+     * @return Un objeto Coords_t con las coordenadas (x, y).
+     */
+    Coords_t coords();
+};
+
+extern KEYPAD_Class KEYPAD; ///< Instancia de la clase KEYPAD_Class para su uso

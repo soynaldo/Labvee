@@ -1,4 +1,4 @@
-#include "i2c.h"
+#include "labvee_i2c.h"
 
 void I2C_Begin()
 {

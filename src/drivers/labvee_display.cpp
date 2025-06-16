@@ -1,20 +1,18 @@
 #include "labvee_display.h"
 
-#define DISPLAY_ADDRESS 0x22 ///< Dirección I2C del display.
+#define DISPLAY_ADDRESS 0x70 ///< Dirección I2C del controlador de displays.
 
-uint16_t display_value = 0;
-
-void displayReset(uint8_t display) {
+void DISPLAY_Class::reset(uint8_t display) {
   uint8_t aux = (display == 2) ? 8 : 0;
   display_value &= (0xFF00 >> aux);
   I2C_Write16(DISPLAY_ADDRESS, display_value);
 }
 
-void displayReset() {
+void DISPLAY_Class::reset() {
   I2C_Write16(DISPLAY_ADDRESS, 0);
 }
 
-void displayWrite(uint8_t display, uint8_t value) {
+void DISPLAY_Class::write(uint8_t display, uint8_t value) {
   const uint8_t dv[10] = {63, 6, 91, 79, 102, 109, 125, 7, 127, 111};
   if (value < 10)
   {
@@ -24,7 +22,7 @@ void displayWrite(uint8_t display, uint8_t value) {
   }
 }
 
-void displayWrite(uint8_t value) {
+void DISPLAY_Class::write(uint8_t value) {
   const uint8_t dv[10] = {63, 6, 91, 79, 102, 109, 125, 7, 127, 111};
   if (value < 100)
   {
@@ -35,19 +33,19 @@ void displayWrite(uint8_t value) {
   }
 }
 
-void displayDP(uint8_t display, uint8_t value) {
+void DISPLAY_Class::dp(uint8_t display, uint8_t value) {
   uint8_t aux = (display == 2) ? D2_DP : ((display == 1) ? D1_DP: 0);
   bitWrite(display_value, aux, value);
   I2C_Write16(DISPLAY_ADDRESS, display_value);
 }
 
-void displaySegment(uint8_t display, uint8_t segment, uint8_t value) {
+void DISPLAY_Class::segment(uint8_t display, uint8_t segment, uint8_t value) {
   uint8_t aux = (display == 2) ? 8 : 0;
   bitWrite(display_value, aux + segment, value);
   I2C_Write16(DISPLAY_ADDRESS, display_value);
 }
 
-void displaySegment(uint8_t display, uint8_t A_SEGMENT, uint8_t B_SEGMENT, uint8_t C_SEGMENT, uint8_t D_SEGMENT, uint8_t E_SEGMENT, uint8_t F_SEGMENT,uint8_t G_SEGMENT, uint8_t DP){
+void DISPLAY_Class::segment(uint8_t display, uint8_t A_SEGMENT, uint8_t B_SEGMENT, uint8_t C_SEGMENT, uint8_t D_SEGMENT, uint8_t E_SEGMENT, uint8_t F_SEGMENT,uint8_t G_SEGMENT, uint8_t DP){
   uint8_t aux = (display == 2) ? 8 : 0;
   bitWrite(display_value, 0 | aux, A_SEGMENT);
   bitWrite(display_value, 1 | aux, B_SEGMENT);
@@ -59,3 +57,5 @@ void displaySegment(uint8_t display, uint8_t A_SEGMENT, uint8_t B_SEGMENT, uint8
   bitWrite(display_value, 7 | aux, DP);
   I2C_Write16(DISPLAY_ADDRESS, display_value);
 }
+
+DISPLAY_Class DISPLAYS; ///< Instancia de la clase DISPLAY_Class para su uso en el programa.

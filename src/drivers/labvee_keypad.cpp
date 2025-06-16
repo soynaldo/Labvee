@@ -3,16 +3,16 @@
 
 #define KEYPAD_ADDRESS 0x20 ///< Dirección I2C del teclado.
 
-uint8_t keypadWaitValue() {
+uint8_t KEYPAD_Class::wait() {
   uint8_t keypadvalue = 0;
   while (!keypadvalue)
   {
-    keypadvalue = keypadGetValue();
+    keypadvalue = read();
   }
   return keypadvalue;
 }
 
-uint8_t keypadGetValue() {
+uint8_t KEYPAD_Class::read() {
   for (uint8_t pinO = 0; pinO < 4; pinO++)
   {
     uint16_t value = 0xFF & ~(1 << pinO);
@@ -25,7 +25,7 @@ uint8_t keypadGetValue() {
   return 0;
 }
 
-Coords_t keypadGetCoords() {
+Coords_t KEYPAD_Class::coords() {
   Coords_t coord;
   for (coord.x = 0; coord.x < 4; coord.x++)
   {
@@ -44,3 +44,5 @@ Coords_t keypadGetCoords() {
   coord.y = 0;
   return coord;
 }
+
+KEYPAD_Class KEYPAD; ///< Instancia de la clase KEYPAD_Class para su uso en el programa.

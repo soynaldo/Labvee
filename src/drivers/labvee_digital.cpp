@@ -27,18 +27,18 @@ uint16_t DIGITAL_readReg(uint8_t reg) {
   return value;
 }
 
-uint8_t DIGITAL(uint8_t terminal, uint8_t pin) {
+uint8_t DIGITAL_Class::read(uint8_t terminal, uint8_t pin) {
   uint16_t actual_value = DIGITAL_readReg(REG_INPUT);
   uint8_t phisical_pin = ((terminal - 1) * 4) + pin - 1;
   return (actual_value & (1 << phisical_pin));
 }
 
-void DIGITAL(uint8_t terminal, uint8_t pin, uint8_t state) {
+void DIGITAL_Class::write(uint8_t terminal, uint8_t pin, uint8_t state) {
   bitWrite(terminal_value, (((terminal - 1) * 4) + pin - 1), state);
   DIGITAL_WriteReg(REG_OUTPUT, terminal_value);
 }
 
-void DIGITAL_Mode(uint8_t terminal, uint8_t pin, uint8_t mode) {
+void DIGITAL_Class::mode(uint8_t terminal, uint8_t pin, uint8_t mode) {
   if (mode == OUTPUT) {
     bitClear(terminal_config, (((terminal - 1) * 4) + pin - 1));
   } else {
@@ -46,3 +46,5 @@ void DIGITAL_Mode(uint8_t terminal, uint8_t pin, uint8_t mode) {
   }
   DIGITAL_WriteReg(REG_CONFIG, terminal_config);
 }
+
+DIGITAL_Class DIGITAL; ///< Instancia de la clase DIGITAL_Class para su uso en el programa.

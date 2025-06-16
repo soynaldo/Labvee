@@ -8,10 +8,10 @@
  */
 void setup() {
   I2C_Begin();
-  displayReset(DISPLAY_U); ///< Resetea el display de las unidades.
+  DISPLAYS.reset(DISPLAY_U); ///< Resetea el display de las unidades.
     
   // Activa los segmentos A, B, C, D y G para formar el número "3".
-  displaySegment(DISPLAY_U, 1, 1, 1, 1, 0, 0, 1, 1); ///< Escribe el número "3" con DP encendido.
+  DISPLAYS.segment(DISPLAY_U, 1, 1, 1, 1, 0, 0, 1, 1); ///< Escribe el número "3" con DP encendido.
 }
 
 void loop() {

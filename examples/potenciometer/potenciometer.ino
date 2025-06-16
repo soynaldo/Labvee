@@ -9,7 +9,7 @@
 void setup() {
   UART_Begin();  ///< Inicializa la comunicación UART a 115200 baudios.
   I2C_Begin();   ///< Inicializa la comunicación I2C.
-  displayReset();    ///< Resetea el display para limpiar la pantalla.
+  DISPLAYS.reset();    ///< Resetea el display para limpiar la pantalla.
 }
 
 /**
@@ -29,6 +29,6 @@ void loop() {
   UART.print(", percent: "); 
   UART.println(percent); 
 
-  displayWrite(percent); ///< Muestra el porcentaje en el display.
+  DISPLAYS.write(percent); ///< Muestra el porcentaje en el display.
   delay(50);             ///< Espera 50 ms antes de la próxima lectura.
 }
