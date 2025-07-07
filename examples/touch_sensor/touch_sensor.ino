@@ -11,7 +11,7 @@ int count = 0;       ///< Contador de pulsaciones del sensor táctil.
  * y resetea el display.
  */
 void setup() {
-  UART_Begin(); ///< Inicializa la comunicación UART a 115200 baudios.
+  Serial.begin(115200); ///< Inicializa la comunicación UART a 115200 baudios.
   I2C_Begin();  ///< Inicializa la comunicación I2C.  
 
   // Configura el pin del sensor táctil como entrada.

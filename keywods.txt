@@ -22,7 +22,6 @@ UART    KEYWORD1
 #######################################	
 
 
-UART_Begin    KEYWORD2
 ADC    KEYWORD2
 
 DIGITAL	   KEYWORD2

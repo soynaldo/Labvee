@@ -7,7 +7,7 @@
  * UART y I2C, y resetea el display para limpiar cualquier visualización anterior.
  */
 void setup() {
-  UART_Begin();  ///< Inicializa la comunicación UART a 115200 baudios.
+  Serial.begin(115200);  ///< Inicializa la comunicación UART a 115200 baudios.
   I2C_Begin();   ///< Inicializa la comunicación I2C.
   DISPLAYS.reset();    ///< Resetea el display para limpiar la pantalla.
 }

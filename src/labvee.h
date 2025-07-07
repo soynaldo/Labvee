@@ -1,24 +1,20 @@
 #pragma once
 
+#include <Arduino.h>
+
 #include "drivers/labvee_i2c.h"
 #include "drivers/labvee_pwm.h"
 #include "drivers/labvee_digital.h"
 #include "drivers/labvee_keypad.h"
 #include "drivers/labvee_display.h"
+#include "drivers/labvee_mp3.h"
+#include "drivers/labvee_loadcell.h"
 
 
 // #define GPIO1
 // #define GPIO2
 // #define GPIO3
 // #define GPIO4
-
-#define UART Serial ///< Puerto UART utilizado.
-#define SPI SPI     ///< Puerto SPI utilizado.
-
-/**
- * @brief Inicializa el puerto UART a 115200 baudios.
- */
-#define UART_Begin() Serial.begin(115200)
 
 
 #define PA1 A2 ///< Pin analógico PA1.
