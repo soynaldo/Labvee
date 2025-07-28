@@ -1,8 +1,9 @@
 #pragma once
 
+#include <Arduino.h>
 #include "SoftwareSerial.h"
 
-#define UART_TX_PIN 10 ///< Pin de transmisión del UART.
-#define UART_RX_PIN 11 ///< Pin de recepción del UART.
+#include "labvee_pins.h"
 
 extern SoftwareSerial UART; ///< Puerto UART utilizado.
+extern SoftwareSerial BT; ///< Puerto UART utilizado para Bluetooth.

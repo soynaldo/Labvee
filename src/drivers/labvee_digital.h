@@ -1,10 +1,18 @@
 #pragma once 
 
 #include "Arduino.h"
-#include "labvee_i2c.h"
+#include "labvee_ioexpander.h"
+#include "labvee_pins.h"
 
 class DIGITAL_Class {
 public:
+    /**
+     * @brief Constructor de la clase DIGITAL_Class.
+     * 
+     * Inicializa los valores de los registros de terminal y configuración.
+     */
+    DIGITAL_Class() : ioexpander(LABVEE_DIGITAL_ADDRESS) {} // Dirección I2C del terminal
+
     /**
      * @brief Lee el estado de un pin digital en un terminal específico.
      * 
@@ -31,6 +39,9 @@ public:
      * @param mode El modo del pin (INPUT o OUTPUT).
      */
     void mode(uint8_t terminal, uint8_t pin, uint8_t mode);
+
+private:
+    IOExpander_Class ioexpander; ///< Instancia de la clase IOExpander_Class para manejar el IO Expander.
 };
 
 extern DIGITAL_Class DIGITAL; ///< Instancia de la clase DIGITAL_Class para su uso en el programa.

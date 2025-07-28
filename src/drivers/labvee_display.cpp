@@ -1,15 +1,20 @@
 #include "labvee_display.h"
 
-#define DISPLAY_ADDRESS 0x70 ///< Dirección I2C del controlador de displays.
+
+void DISPLAY_Class::begin() {
+  ioexpander.modeAll(0x0000); // Configura todos los pines como salida
+  ioexpander.writeAll(0x0000); // Configura todos los pines como LOW
+}
 
 void DISPLAY_Class::reset(uint8_t display) {
   uint8_t aux = (display == 2) ? 8 : 0;
+  uint16_t display_value = ioexpander.outValue();
   display_value &= (0xFF00 >> aux);
-  I2C_Write16(DISPLAY_ADDRESS, display_value);
+  ioexpander.writeAll(display_value);
 }
 
 void DISPLAY_Class::reset() {
-  I2C_Write16(DISPLAY_ADDRESS, 0);
+  ioexpander.writeAll(0);
 }
 
 void DISPLAY_Class::write(uint8_t display, uint8_t value) {
@@ -17,8 +22,9 @@ void DISPLAY_Class::write(uint8_t display, uint8_t value) {
   if (value < 10)
   {
     uint8_t aux = (display == 2) ? 8 : 0;
+    uint16_t display_value = ioexpander.outValue();
     display_value = dv[value] | ((0xFF00 >> aux) & display_value);
-    I2C_Write16(DISPLAY_ADDRESS, display_value);
+    ioexpander.writeAll(display_value);
   }
 }
 
@@ -28,25 +34,29 @@ void DISPLAY_Class::write(uint8_t value) {
   {
     uint8_t dec = value % 10;
     uint8_t unit = value / 10;
+    uint16_t display_value = ioexpander.outValue();
     display_value = dv[unit] | (dv[dec] << 8);
-    I2C_Write16(DISPLAY_ADDRESS, display_value);
+    ioexpander.writeAll(display_value);
   }
 }
 
 void DISPLAY_Class::dp(uint8_t display, uint8_t value) {
   uint8_t aux = (display == 2) ? D2_DP : ((display == 1) ? D1_DP: 0);
+  uint16_t display_value = ioexpander.outValue();
   bitWrite(display_value, aux, value);
-  I2C_Write16(DISPLAY_ADDRESS, display_value);
+  ioexpander.writeAll(display_value);
 }
 
 void DISPLAY_Class::segment(uint8_t display, uint8_t segment, uint8_t value) {
   uint8_t aux = (display == 2) ? 8 : 0;
+  uint16_t display_value = ioexpander.outValue();
   bitWrite(display_value, aux + segment, value);
-  I2C_Write16(DISPLAY_ADDRESS, display_value);
+  ioexpander.writeAll(display_value);
 }
 
 void DISPLAY_Class::segment(uint8_t display, uint8_t A_SEGMENT, uint8_t B_SEGMENT, uint8_t C_SEGMENT, uint8_t D_SEGMENT, uint8_t E_SEGMENT, uint8_t F_SEGMENT,uint8_t G_SEGMENT, uint8_t DP){
   uint8_t aux = (display == 2) ? 8 : 0;
+  uint16_t display_value = ioexpander.outValue();
   bitWrite(display_value, 0 | aux, A_SEGMENT);
   bitWrite(display_value, 1 | aux, B_SEGMENT);
   bitWrite(display_value, 2 | aux, C_SEGMENT);
@@ -55,7 +65,7 @@ void DISPLAY_Class::segment(uint8_t display, uint8_t A_SEGMENT, uint8_t B_SEGMEN
   bitWrite(display_value, 5 | aux, F_SEGMENT);
   bitWrite(display_value, 6 | aux, G_SEGMENT);
   bitWrite(display_value, 7 | aux, DP);
-  I2C_Write16(DISPLAY_ADDRESS, display_value);
+  ioexpander.writeAll(display_value);
 }
 
-DISPLAY_Class DISPLAYS; ///< Instancia de la clase DISPLAY_Class para su uso en el programa.
+DISPLAY_Class DISP; ///< Instancia de la clase DISPLAY_Class para su uso en el programa.

@@ -1,7 +1,8 @@
 #pragma once
 
 #include "Arduino.h"
-#include "labvee_i2c.h"
+#include "labvee_ioexpander.h"
+#include "labvee_pins.h"
 
 /**
  * @class Coords_t
@@ -30,6 +31,20 @@ public:
 class KEYPAD_Class {
 public:
     /**
+     * @brief Constructor de la clase KEYPAD_Class.
+     * 
+     * Inicializa la instancia de IOExpander_Class para manejar el IO Expander del teclado.
+     */
+    KEYPAD_Class() : ioexpander(LABVEE_KEYPAD_ADDRESS) {} // Dirección I2C del teclado
+
+    /**
+     * @brief Inicializa el teclado.
+     * 
+     * Configura el IO Expander y prepara el teclado para su uso.
+     */
+    void begin();
+
+    /**
      * @brief Obtiene el valor actual del teclado.
      * 
      * @return El valor leído del teclado.
@@ -49,6 +64,9 @@ public:
      * @return Un objeto Coords_t con las coordenadas (x, y).
      */
     Coords_t coords();
+
+private:
+    IOExpander_Class ioexpander; ///< Instancia de la clase IOExpander_Class para manejar el IO Expander.
 };
 
-extern KEYPAD_Class KEYPAD; ///< Instancia de la clase KEYPAD_Class para su uso
+extern KEYPAD_Class KP; ///< Instancia de la clase KEYPAD_Class para su uso

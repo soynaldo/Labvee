@@ -1,7 +1,9 @@
 #pragma once
 
 #include "Arduino.h"
-#include "labvee_i2c.h"
+
+#include "labvee_pins.h"
+#include "labvee_ioexpander.h"
 
 // Definiciones para los segmentos de los displays
 #define D1_A 0  ///< Segmento A del display 1.
@@ -27,6 +29,20 @@
 
 class DISPLAY_Class {
 public:
+    /**
+     * @brief Constructor de la clase DISPLAY_Class.
+     * 
+     * Inicializa los valores de los displays y la instancia de DIGITAL_Class.
+     */
+    DISPLAY_Class() : ioexpander(LABVEE_DISPLAY_ADDRESS) {}
+
+    /**
+     * @brief Inicializa el display.
+     * 
+     * Configura el IO Expander y prepara el display para su uso.
+     */
+    void begin();
+
     /**
      * @brief Resetea un display específico.
      * 
@@ -87,7 +103,7 @@ public:
     void segment(uint8_t display, uint8_t A, uint8_t B, uint8_t C, uint8_t D, uint8_t E, uint8_t F, uint8_t G, uint8_t DP);
 
 private:
-    uint16_t display_value; ///< Valor actual de los displays.
+    IOExpander_Class ioexpander; ///< Instancia de la clase IOExpander_Class para manejar el IO Expander.
 };
 
-extern DISPLAY_Class DISPLAYS; ///< Instancia de la clase DISPLAY_Class para su uso en el programa.
+extern DISPLAY_Class DISP; ///< Instancia de la clase DISPLAY_Class para su uso en el programa.
