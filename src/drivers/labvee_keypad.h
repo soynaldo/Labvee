@@ -68,5 +68,3 @@ public:
 private:
     IOExpander_Class ioexpander; ///< Instancia de la clase IOExpander_Class para manejar el IO Expander.
 };
-
-extern KEYPAD_Class KP; ///< Instancia de la clase KEYPAD_Class para su uso

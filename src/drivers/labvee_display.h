@@ -105,5 +105,3 @@ public:
 private:
     IOExpander_Class ioexpander; ///< Instancia de la clase IOExpander_Class para manejar el IO Expander.
 };
-
-extern DISPLAY_Class DISP; ///< Instancia de la clase DISPLAY_Class para su uso en el programa.

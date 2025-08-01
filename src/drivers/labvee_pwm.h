@@ -124,4 +124,3 @@ private:
     uint8_t _prescale = 0; /**< Valor del prescaler para la frecuencia de PWM */
 };
 
-extern PWM_Class PWM; ///< Instancia de la clase PWM_Class para su uso en el programa.

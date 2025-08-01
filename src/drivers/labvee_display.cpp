@@ -3,7 +3,7 @@
 
 void DISPLAY_Class::begin() {
   ioexpander.modeAll(0x0000); // Configura todos los pines como salida
-  ioexpander.writeAll(0x0000); // Configura todos los pines como LOW
+  reset(); // Resetea el display
 }
 
 void DISPLAY_Class::reset(uint8_t display) {
@@ -67,5 +67,3 @@ void DISPLAY_Class::segment(uint8_t display, uint8_t A_SEGMENT, uint8_t B_SEGMEN
   bitWrite(display_value, 7 | aux, DP);
   ioexpander.writeAll(display_value);
 }
-
-DISPLAY_Class DISP; ///< Instancia de la clase DISPLAY_Class para su uso en el programa.

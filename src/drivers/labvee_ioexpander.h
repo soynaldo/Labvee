@@ -15,7 +15,7 @@ public:
      * 
      * Inicializa los valores de los registros de terminal y configuración.
      */
-    IOExpander_Class(uint8_t terminal_address = 0x20) 
+    IOExpander_Class(uint8_t terminal_address) 
         : _terminal_value(0), _terminal_config(0), _address(terminal_address) {
     }
 
@@ -86,7 +86,7 @@ private:
     void writeReg(uint8_t reg, uint16_t value) {
         uint8_t valueh = value >> 8;
         uint8_t valuel = value;
-        uint8_t valueraw[4] = {reg, valuel, reg + 1, valueh};
+        uint8_t valueraw[4] = {reg, valuel, (uint8_t)(reg + 1), valueh};
         I2C_WriteBytes(_address, valueraw, 2);
         I2C_WriteBytes(_address, valueraw + 2, 2);
     }

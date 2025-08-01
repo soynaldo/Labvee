@@ -109,5 +109,3 @@ void PWM_Class::setMode(uint8_t mode, uint8_t value) {
     uint8_t buffer[2] = {mode, value};
     I2C_WriteBytes(PCA9685_I2C_ADDRESS, buffer, 2);
 }
-
-PWM_Class PWM; ///< Instancia de la clase PWM_Class para su uso

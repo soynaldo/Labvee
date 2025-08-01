@@ -45,4 +45,3 @@ Coords_t KEYPAD_Class::coords() {
   return coord;
 }
 
-KEYPAD_Class KP; ///< Instancia de la clase KEYPAD_Class para su uso en el programa.

@@ -16,5 +16,3 @@ public:
         HX711::begin(LABVEE_SCALES_DOUT_PIN, LABVEE_SCALES_SCK_PIN, gain);  // Inicializa el HX711 con los pines y ganancia por defecto
     }
 };
-
-extern DS_Class DS;  // Declaración de la instancia global de la clase DS_Class

@@ -15,5 +15,3 @@ void DIGITAL_Class::mode(uint8_t terminal, uint8_t pin, uint8_t mode) {
   uint8_t phisical_pin = ((terminal - 1) * 4) + pin - 1;
   ioexpander.modePin(phisical_pin, mode);
 }
-
-DIGITAL_Class DIGITAL; ///< Instancia de la clase DIGITAL_Class para su uso en el programa.

@@ -12,6 +12,13 @@
 void I2C_Begin();
 
 /**
+ * @brief Escanea el bus I2C para detectar dispositivos conectados.
+ * 
+ * Esta función imprime en el Serial Monitor las direcciones de los dispositivos I2C detectados.
+ */
+void I2C_Scan();
+
+/**
  * @brief Lee un byte desde una dirección I2C.
  * 
  * @param address La dirección del dispositivo I2C desde donde se leerá el byte.
