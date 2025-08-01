@@ -8,8 +8,8 @@
  */
 void setup() {
   Serial.begin(115200);  ///< Inicializa la comunicación UART a 115200 baudios.
-  I2C_Begin();   ///< Inicializa la comunicación I2C.
-  DISPLAYS.reset();    ///< Resetea el display para limpiar la pantalla.
+  labveeBegin();  ///< Inicializa los controladores de Labvee.
+  DISP.reset();    ///< Resetea el display para limpiar la pantalla.
 }
 
 /**
@@ -20,15 +20,15 @@ void setup() {
  * en la salida UART. También actualiza el display con el porcentaje.
  */
 void loop() {
-  int pot_value = ADC(PA1);                  ///< Lee el valor del potenciómetro en el pin PA1.
+  int pot_value = analogRead(PA1);                  ///< Lee el valor del potenciómetro en el pin PA1.
   int percent = map(pot_value, 0, 2047, 0, 99);  ///< Mapea el valor leído a un porcentaje entre 0 y 99.
 
   // Envía el valor del potenciómetro y el porcentaje a través de UART.
-  UART.print("Potenciometer measure: "); 
-  UART.print(pot_value); 
-  UART.print(", percent: "); 
-  UART.println(percent); 
+  Serial.print("Potenciometer measure: ");
+  Serial.print(pot_value);
+  Serial.print(", percent: ");
+  Serial.println(percent);
 
-  DISPLAYS.write(percent); ///< Muestra el porcentaje en el display.
+  DISP.write(percent); ///< Muestra el porcentaje en el display.
   delay(50);             ///< Espera 50 ms antes de la próxima lectura.
 }

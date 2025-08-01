@@ -7,11 +7,11 @@
  * segmentos individuales. También se activa el punto decimal.
  */
 void setup() {
-  I2C_Begin();
-  DISPLAYS.reset(DISPLAY_U); ///< Resetea el display de las unidades.
+  labveeBegin(); ///< Inicializa los controladores de Labvee.
+  DISP.reset(DISPLAY_U); ///< Resetea el display de las unidades.
     
   // Activa los segmentos A, B, C, D y G para formar el número "3".
-  DISPLAYS.segment(DISPLAY_U, 1, 1, 1, 1, 0, 0, 1, 1); ///< Escribe el número "3" con DP encendido.
+  DISP.segment(DISPLAY_U, 1, 1, 1, 1, 0, 0, 1, 1); ///< Escribe el número "3" con DP encendido.
 }
 
 void loop() {

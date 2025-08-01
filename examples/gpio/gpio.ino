@@ -7,6 +7,7 @@
  * en intervalos de un segundo. Además, se lee el estado del pin 1 del terminal 2.
  */
 void setup() {
+  labveeBegin(); ///< Inicializa los controladores de Labvee.
   DIGITAL.mode(1, 1, OUTPUT); ///< Configura el pin 1 del terminal 1 como salida.
   DIGITAL.mode(2, 1, INPUT);   ///< Configura el pin 1 del terminal 2 como entrada.
 }

@@ -7,6 +7,7 @@
  * un pin para generar una señal PWM con un ciclo útil del 50%.
  */
 void setup() {
+    labveeBegin(); ///< Inicializa los controladores de Labvee.
     PWM.begin(64);  ///< Inicializa el módulo PWM con un prescaler de 64.
     PWM.set(9, 50);     ///< Configura el pin 9 con un ciclo útil del 50%.
 }

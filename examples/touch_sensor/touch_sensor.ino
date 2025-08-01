@@ -12,7 +12,7 @@ int count = 0;       ///< Contador de pulsaciones del sensor táctil.
  */
 void setup() {
   Serial.begin(115200); ///< Inicializa la comunicación UART a 115200 baudios.
-  I2C_Begin();  ///< Inicializa la comunicación I2C.  
+  labveeBegin();  ///< Inicializa los controladores de Labvee.
 
   // Configura el pin del sensor táctil como entrada.
   DIGITAL.mode(1, 1, INPUT); ///< Pin 1 del terminal 1 como entrada.  
@@ -22,7 +22,7 @@ void setup() {
   DIGITAL.mode(2, 2, OUTPUT); ///< Pin 2 del terminal 2 como salida (Verde).
   DIGITAL.mode(2, 3, OUTPUT); ///< Pin 3 del terminal 2 como salida (Azul).  
   
-  DISPLAYS.reset(); ///< Resetea el display para limpiar cualquier visualización anterior.
+  DISP.reset(); ///< Resetea el display para limpiar cualquier visualización anterior.
 }
 
 /**
@@ -36,7 +36,7 @@ void loop() {
   // Verifica si el sensor táctil está presionado y si no se ha registrado una pulsación anterior.
   if (DIGITAL.read(1, 1) && pressed == false) {
     count++;                     ///< Incrementa el contador.
-    DISPLAYS.write(count);         ///< Muestra el nuevo valor del contador en el display.
+    DISP.write(count);         ///< Muestra el nuevo valor del contador en el display.
     pressed = true;              ///< Marca que se ha registrado una pulsación.  
       
     // Parpadea los LEDs RGB.
