@@ -79,7 +79,7 @@ Lee el estado actual de un pin digital.
 
 **Parámetros:**
 
-* `terminal` → Dirección del terminal digital (I²C).
+* `terminal` → Dirección del terminal digital.
 * `pin` → Número de pin que se desea leer.
 
 **Retorno:**
@@ -90,7 +90,7 @@ Lee el estado actual de un pin digital.
 **Ejemplo:**
 
 ```cpp
-uint8_t estado = DIGITAL.read(0x20, 3); // Lee el pin 3 del terminal en dirección 0x20
+uint8_t estado = DIGITAL.read(2, 3); // Lee el pin 3 del terminal 2
 if (estado == HIGH) {
     // El pin está en alto
 }
@@ -104,14 +104,14 @@ Configura el estado de un pin digital como alto o bajo.
 
 **Parámetros:**
 
-* `terminal` → Dirección del terminal digital (I²C).
+* `terminal` → Dirección del terminal digital.
 * `pin` → Número de pin a configurar.
 * `state` → `HIGH` o `LOW`.
 
 **Ejemplo:**
 
 ```cpp
-DIGITAL.write(0x20, 5, HIGH); // Coloca el pin 5 en alto
+DIGITAL.write(2, 4, HIGH); // Coloca el pin 4 del terminal 2 en alto
 ```
 
 ---
@@ -122,21 +122,21 @@ Configura si un pin será usado como entrada o salida.
 
 **Parámetros:**
 
-* `terminal` → Dirección del terminal digital (I²C).
+* `terminal` → Dirección del terminal digital.
 * `pin` → Número de pin a configurar.
 * `mode` → `INPUT` o `OUTPUT`.
 
 **Ejemplo:**
 
 ```cpp
-DIGITAL.mode(0x20, 5, OUTPUT); // Configura el pin 5 como salida
+DIGITAL.mode(2, 4, OUTPUT); // Configura el pin 4 del terminal 2 como salida
 ```
 
 ---
 
 **Notas importantes:**
 
-* Asegúrate de que la dirección `terminal` coincida con la dirección I²C real del expansor conectado.
+* Asegúrate de que la dirección `terminal` coincida con la dirección real.
 * Antes de usar los pines como salidas, configúralos con `mode()`.
 * La clase está diseñada para trabajar con un **IO Expander** que amplía la capacidad de entradas/salidas del sistema.
 
@@ -848,4 +848,5 @@ void printDetail(uint8_t type, int value);
 * Cada tipo de mensaje (`TimeOut`, `WrongStack`, `DFPlayerCardInserted`, etc.) se interpreta y se muestra de forma legible para el usuario.
 
 ---
+
 
