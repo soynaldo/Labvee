@@ -17,7 +17,7 @@ void PWM_Class::begin(uint8_t prescale) {
     }
 }
 
-void set(uint8_t pin, uint8_t percent) {
+void PWM_Class::set(uint8_t pin, uint8_t percent) {
     if (percent <= 100 && pin < 17) {
         uint16_t ton = map(percent, 0, 100, 0, 4095);
         uint16_t toff = 4095 - ton;
@@ -31,7 +31,7 @@ void set(uint8_t pin, uint8_t percent) {
     }
 }
 
-uint16_t get(uint8_t pin) {
+uint16_t PWM_Class::get(uint8_t pin) {
     uint8_t buffer[2] = {0};
     I2C_Write8(PCA9685_I2C_ADDRESS, uint8_t(PCA9685_LED0_ON_L + 4 * pin));
     I2C_ReadBytes(PCA9685_I2C_ADDRESS, buffer, 2);
