@@ -17,14 +17,14 @@ public:
      * 
      * Representa la posición en el eje horizontal.
      */
-    int x = 0;
+    int row = 0;
 
     /**
      * @brief Coordenada Y en el plano.
      * 
      * Representa la posición en el eje vertical.
      */
-    int y = 0;
+    int column = 0;
 };
 
 

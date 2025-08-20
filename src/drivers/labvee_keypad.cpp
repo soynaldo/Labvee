@@ -2,8 +2,8 @@
 
 
 void KEYPAD_Class::begin() {
-  ioexpander.modeAll(0xFF00); // Configura todos los pines como entrada
-  ioexpander.writeAll(0xFFFF); // Configura todos los pines como HIGH
+  ioexpander.modeAll(0b11110000); // Configura todos los pines como entrada
+  // ioexpander.writeAll(0xFFFF); // Configura todos los pines como HIGH
 }
 
 uint8_t KEYPAD_Class::wait() {
@@ -28,20 +28,21 @@ uint8_t KEYPAD_Class::read() {
 
 Coords_t KEYPAD_Class::coords() {
   Coords_t coord;
-  for (coord.x = 0; coord.x < 4; coord.x++) {
-    uint16_t port_value = 0xFF & ~(1 << coord.x);
+  for (coord.column = 0; coord.column < 4; coord.column++) {
+    uint16_t port_value = 0xFF & ~(1 << coord.column);
     ioexpander.writeAll(port_value);
     port_value = ioexpander.readAll();
-    for (coord.y = 0; coord.y < 4; coord.y++) {
-      if (!bitRead(port_value, 7 - coord.y)) {
-        coord.x++;
-        coord.y++;
+    for (coord.row = 0; coord.row < 4; coord.row++) {
+      if (!bitRead(port_value, 7 - coord.row)) {
+        coord.column = 4 - coord.column; // Ajusta la columna
+        //coord.column++;
+        coord.row++;
         return coord;
       }
     }
   }
-  coord.x = 0;
-  coord.y = 0;
+  coord.column = 0;
+  coord.row = 0;
   return coord;
 }
 
